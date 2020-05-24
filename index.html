@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<SCRIPT language=JavaScript>
+
+    function check_length(jv_form) {
+        maxLen = 2000;
+        if (jv_form.jv_text.value.length > maxLen) {
+            jv_form.jv_text.value = jv_form.jv_text.value.substring(0, maxLen);
+            alert("You have reached your maximum limit of characters allowed.");
+            jv_form.text_num.value = maxLen - jv_form.jv_text.value.length;
+        } else {
+            jv_form.text_num.value = maxLen - jv_form.jv_text.value.length;
+        }
+    }
+    function myFunction() {
+
+        var x = document.getElementById("ContactForm");
+        var text = "";
+        var i;
+        for (i = 0; i < x.length; i++) {
+            text += x.elements[i].name + ":";
+            text += x.elements[i].value + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+    }
+    function sendInfo() {
+        console.log("got here!");
+        var form = document.getElementById("ContactForm");
+        form.elements[0].value = "AD40";
+
+        var formData = new FormData(form);
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.open("POST", "https://lcmspubcontact.lc.ca.gov/PublicLCMS/ContactPopupSubmit.php", true);
+        xhttp.setRequestHeader("Host", "lcmspubcontact.lc.ca.gov");
+        xhttp.setRequestHeader("Connection", "keep-alive");
+        xhttp.setRequestHeader("Origin", "https://lcmspubcontact.lc.ca.gov");
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.setRequestHeader("Sec-Fetch-Site", "same-origin");
+        xhttp.setRequestHeader("Sec-Fetch-Mode", "navigate");
+        xhttp.setRequestHeader("Referer", "https://lcmspubcontact.lc.ca.gov/PublicLCMS/ContactPopupSubmit.php");
+
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                console.log(xhttp.responseText);
+            } else if (this.status !== 200) {
+                console.log(xhttp.responseText);
+            }
+        };
+
+        xhttp.send(formData);
+    }
+</script>
+
+
+<html>
+
+<body>
+
+    <form name = "ContactForm" id="ContactForm" action="/action_page.php">
+        <input type="hidden" name="district" value="" />
+        <input type="hidden" name="inframe" value="N" />
+        <input type="hidden" name="headerimg" value="Y" />
+        First name: <input type="text" name="txtFirstName" required><br>
+        Last name: <input type="text" name="txtLastName" required><br><br>
+        Address: <input type="text" name="txtAddress" required><br><br>
+        City: <input type="text" name="txtCity" required><br><br>
+        Zip Code: <input type="text" name="txtZip" required><br><br>
+        Phone: (<input name="txtAreaCode" type="text" maxlength="3" id="txtAreaCode" tabindex="7" size="3"
+            onKeyUp="moveToNextField( this, 3, txtPhone1 );" style="width: 30px;" />
+        ) <input name="txtPhone1" type="text" maxlength="3" id="txtPhone1" tabindex="8" size="3"
+            onKeyUp="moveToNextField( this, 3, txtPhone2 );" style="width: 30px;" />
+        - <input name="txtPhone2" type="text" maxlength="4" id="txtPhone2" tabindex="9" size="4"
+            onKeyUp="moveToNextField( this, 4, txtExt );" style="width: 40px;" /> &nbsp;&nbsp;<label
+            for="txtExt">ext:</label>&nbsp;
+        <input name="txtExt" type="text" maxlength="4" id="txtExt" tabindex="10" size="4" style="width: 40px;" />
+        <input type="hidden" name="phoneTypeListbox" value="home" />
+        Email: <input type="text" name="txtEmail" required><br><br>
+        <input type = "hidden" value="40142" name = "IssueListBox"/>
+        <input type="hidden" value="2000" name="text_num" />
+        Message: <textarea name="jv_text" rows="4" cols="50"
+            style="font-family: Arial; height: 75px; width: 418px;" required>Insert desired message here</textarea>
+
+        <input type="submit" name="submitButton" value="Submit" id="submitButton" />
+
+    </form>
+
+    <p>Click "Try it" to display the value of each element in the form.</p>
+
+    <button onclick="sendInfo()">Try it</button>
+
+    <p id="demo"></p>
+
+
+</body>
+
+</html>
