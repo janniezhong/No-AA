@@ -4,22 +4,41 @@ var app = express();
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
  
-// Running Server Details.
-var server = app.listen(8082, function () {
-  var host = server.address().address
-  var port = server.address().port
-  console.log("Example app listening at %s:%s Port", host, port)
+var options = {
+    host: 'lcmspubcontact.lc.ca.gov',
+    path: '/PublicLCMS/ContactPopupSubmit.php',
+    port: '1338',
+    method: 'POST',
+    headers: {'custom': 'Custom Header Demo works'}
+};
+
+callback = function(response) {
+    var str = ''
+    response.on('data', function (chunk) {
+      str += chunk;
+    });
+  
+    response.on('end', function () {
+      console.log(str);
+    });
+}
+
+
+
+var server = app.listen(8080, function () {
+    var host = server.address().address;
+    var port = server.address().port;
+    console.log("Example app listening at %s:%s Port", host, port);
 });
- 
- 
+
 app.get('/form', function (req, res) {
   var html='';
   html +="<body>";
   html += "<form action='/thank'  method='post' name='form1'>";
-  html += "Name:</p><input type= 'text' name='name'>";
-  html += "Email:</p><input type='text' name='email'>";
-  html += "address:</p><input type='text' name='address'>";
-  html += "Mobile number:</p><input type='text' name='mobilno'>";
+  html += "Name:<input type= 'text' name='name'></p>";
+  html += "Email:<input type='text' name='email'></p>";
+  html += "address:<input type='text' name='address'></p>";
+  html += "Mobile number:<input type='text' name='mobilno'></p>";
   html += "<input type='submit' value='submit'>";
   html += "<INPUT type='reset'  value='reset'>";
   html += "</form>";
@@ -34,4 +53,13 @@ app.post('/thank', urlencodedParser, function (req, res){
   reply += "Your address is" + req.body.address;
   reply += "Your mobile number is" + req.body.mobilno;
   res.send(reply);
+
+
+
+  var req = http.request(options, callback);
+  req.end();
+
  });
+
+
+
