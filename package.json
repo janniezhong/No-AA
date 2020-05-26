@@ -1,0 +1,31 @@
+{
+  "name": "no-aa",
+  "version": "1.0.0",
+  "description": "ACA_package",
+  "main": "app.js",
+  "scripts": {
+    "test": "ACAsite",
+    "init-claudia": "claudia generate-serverless-express-proxy --express-module app",
+    "create-api": "claudia create --handler lambda.handler --deploy-proxy-api --region us-east-2",
+    "update-api": "claudia --update",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janniezhong/No-AA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janniezhong/No-AA/issues"
+  },
+  "homepage": "https://github.com/janniezhong/No-AA#readme",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.8",
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "request": "^2.88.2",
+    "serverless-http": "^2.5.0"
+  }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<SCRIPT language=JavaScript>
+
+    function check_length(jv_form) {
+        maxLen = 2000;
+        if (jv_form.jv_text.value.length > maxLen) {
+            jv_form.jv_text.value = jv_form.jv_text.value.substring(0, maxLen);
+            alert("You have reached your maximum limit of characters allowed.");
+            jv_form.text_num.value = maxLen - jv_form.jv_text.value.length;
+        } else {
+            jv_form.text_num.value = maxLen - jv_form.jv_text.value.length;
+        }
+    }
+    function myFunction() {
+
+        var x = document.getElementById("ContactForm");
+        var text = "";
+        var i;
+        for (i = 0; i < x.length; i++) {
+            text += x.elements[i].name + ":";
+            text += x.elements[i].value + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+    }
+    function sendInfo() {
+        console.log("got here!");
+        var form = document.getElementById("ContactForm");
+        form.elements[0].value = "AD40";
+
+        var formData = new FormData(form);
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.open("POST", "https://lcmspubcontact.lc.ca.gov/PublicLCMS/ContactPopupSubmit.php", true);
+
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                console.log(xhttp.responseText);
+            } else if (this.status !== 200) {
+                console.log(xhttp.responseText);
+            }
+        };
+
+        xhttp.send(formData);
+    }
+</script>
+
+
+<html lang="en">
+
+<head>
+    <title>Vote No to ACA-5</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
+</head>
+
+
+<body>
+    <div class="bg-contact2" style="background-image: url('images/bg-01.png');">
+        <div class="container-contact2">
+            <div class="wrap-contact2">
+                <form class="contact2-form validate-form" name="ContactForm" id="ContactForm" action="/thank"
+                    method="POST">
+                    <span class="contact2-form-title"> Vote No to ACA-5 </span>
+
+                    <input type="hidden" name="district" value="" />
+                    <input type="hidden" name="inframe" value="N" />
+                    <input type="hidden" name="headerimg" value="Y" />
+
+
+                    <div class="wrap-input2 validate-input" data-validate="First name is required">
+
+                        <input class="input2" type="text" name="txtFirstName" required />
+                        <span class="focus-input2" data-placeholder="FIRST NAME"></span>
+
+                    </div>
+                    <div class="wrap-input2 validate-input" data-validate="Last name is required">
+
+                        <input class="input2" type="text" name="txtLastName" required />
+                        <span class="focus-input2" data-placeholder="LAST NAME"></span>
+                    </div>
+
+                    <div class="wrap-input2 validate-input" data-validate="Address is required">
+                        <!--<p>Your address *</p>-->
+
+                        <input class="input2" type="text" name="txtAddress" required />
+                        <span class="focus-input2" data-placeholder="STREET ADDRESS"></span>
+
+                    </div>
+                    <div class="wrap-input2 validate-input" data-validate="City is required">
+
+                        <input class="input2" type="text" name="txtCity" required />
+                        <span class="focus-input2" data-placeholder="CITY"></span>
+
+                    </div>
+                    <div class="wrap-input2 validate-input" data-validate="Zip code is required">
+
+                        <input class="input2" type="text" name="txtZip" required />
+                        <span class="focus-input2" data-placeholder="ZIP CODE"></span>
+
+                    </div>
+
+                    <input type="hidden" name="txtAreaCode" value="" />
+                    <input type="hidden" name="txtPhone1" value="" />
+                    <input type="hidden" name="txtPhone2" value="" />
+                    <input type="hidden" name="txtExt" value="" />
+
+                    <input type="hidden" name="phoneTypeListbox" value="home" />
+
+                    <div class="wrap-input2 validate-input" data-validate="Valid email is required">
+                        <!--<p>Email *</p>-->
+                        <input class="input2" type="text" name="txtEmail" required />
+                        <span class="focus-input2" data-placeholder="EMAIL"></span>
+
+                    </div>
+                    <input type="hidden" value="" name="IssueListBox" />
+                    <input type="hidden" value="2000" name="text_num" />
+
+                    <div class="wrap-input2 validate-input" data-validate="Message is required">
+                        <!--<p>Message *</p>-->
+
+                        <textarea class="input2" name="jv_text" rows="5" required>
+                        
+Honorable Assembly Member,&#13;&#10;     I am writing to urge you to vote NO on ACA-5 at the coming Appropriations Committee hearings.&#13;&#10;     Our online petition has collected more than 30k signatures in a very short time (https://www.change.org/p/california-state-assembly-members-vote-no-to-aca-5), and this shows voters do not want to revive the affirmative acts in any form. &#13;&#10;     Please protect our golden state by voting NO on ACA-5. Our community is counting on you to protect our rights and future!
+                    Sincerely,</textarea>
+                        <span class="focus-input2" data-placeholder="MESSAGE"></span>
+
+                    </div>
+
+                    <!--<div class="btn-block">
+                <button type="submit" href="/">Make Your Opinion Heard</button>
+            </div>-->
+
+                    <div class="container-contact2-form-btn">
+                        <div class="wrap-contact2-form-btn">
+                            <div class="contact2-form-bgbtn"></div>
+                            <button type="submit" class="contact2-form-btn">
+                                Make Your Opinion Heard
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-23581568-13');
+    </script>
+
+</body>
+
+</html>

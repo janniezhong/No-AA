@@ -1,0 +1,12 @@
+runtime: nodejs
+env: flex
+
+handlers:
+  - url: /
+    static_dir: views
+  - url: /thank
+    static_dir: views
+  - url: /index.html
+    static_dir: views
+  - url: /.*
+    script: auto
