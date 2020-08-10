@@ -40,9 +40,9 @@ body, html {
 /*---------------------------------------------*/
 a {
 	font-family: Poppins-Regular;
-	font-size: 14px;
+	font-size: 17px;
 	line-height: 1.7;
-	color: #666666;
+	color: #d1003f;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
@@ -153,11 +153,11 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: rgba(219,21,99,0.8);
-  background: -webkit-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
-  background: -o-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
-  background: -moz-linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
-  background: linear-gradient(45deg, rgba(213,0,125,0.8), rgba(229,57,53,0.8));
+  background: rgba(219,21,99,0);
+  background: -webkit-linear-gradient(45deg, rgba(213, 0, 124, 0.4), rgba(229,57,53,0.4));
+  background: -o-linear-gradient(45deg, rgba(213,0,125,0.4), rgba(229,57,53,0.4));
+  background: -moz-linear-gradient(45deg, rgba(213,0,125,0.4), rgba(229,57,53,0.4));
+  background: linear-gradient(45deg, rgba(213,0,125,0.4), rgba(229,57,53,0.4));
 }
 
 .wrap-contact2 {
@@ -439,4 +439,26 @@ textarea.input2 + .focus-input2::after {
     visibility: visible;
     opacity: 1;
   }
+}
+
+
+progress {
+  border: 0;
+  background: #eee;
+  border-radius: 100px;
+}
+
+progress::-moz-progress-bar {
+  border-radius: 100px;
+  background: linear-gradient(to right, rgba(250, 103, 92, .1), rgba(222, 106, 106, 1));
+}
+
+progress::-webkit-progress-bar {
+  background: #eee;
+  border-radius: 100px;
+}
+
+progress::-webkit-progress-value {
+  border-radius: 100px;
+  background: linear-gradient(to right, rgba(250, 103, 92, .1), rgba(222, 106, 106, 1));
 }

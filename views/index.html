@@ -44,13 +44,38 @@
 
         xhttp.send(formData);
     }
+    
+// fetch("/").then(response => response.json()).then(value => {
+    //     //document.getElementById("countervalue").innerHTML = value;
+    //     console.log("In index.html, the counter value is " + document.getElementById("countervalue"));
+    // });
+
+    /*window.onload = function() {
+        console.log("HEREEEE");
+        fetch('/', {
+            method: 'GET'
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log('Success:', result);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+
+
+
+    
+      document.getElementById('counter').innerHTML = document.getElementById('counter');
+    };*/
+
 </script>
 
 
 <html lang="en">
 
 <head>
-    <title>Vote No to ACA-5</title>
+    <title>Keep Prop 209, Vote NO on ACA-5</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -68,17 +93,37 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/modal-box.min.css">
     <!--===============================================================================================-->
 </head>
 
 
 <body>
-    <div class="bg-contact2" style="background-image: url('images/bg-01.png');">
+    <div class="bg-contact2" style="background-image: url('images/bg-05.jpeg');">
         <div class="container-contact2">
             <div class="wrap-contact2">
-                <form class="contact2-form validate-form" name="ContactForm" id="ContactForm" action="/thank"
-                    method="POST">
-                    <span class="contact2-form-title"> Vote No to ACA-5 </span>
+
+
+                <form class="contact2-form validate-form" name="ContactForm" id="ContactForm" action="/thank" method="POST">
+                    <span class="contact2-form-title"> Keep Prop 209, Vote NO on ACA-5 </span>
+                    <div class="wrap-input2">
+                        <span>ACA-5 is a California Constitution Amendment that attempts to legalize racial and sexual discrimination in public education, public employment and government contracting. If adopted, it will stoke racial tension in California and set equal opportunity and equal rights backward for decades. ACA-5 is moving up the voting process in Californian Legislature.  
+                                    <br><br> <strong>Write to state legislators NOW to stop ACA-5 and institutionalized discrimination. </strong> <br><br> For more info about ACA-5, please visit <a href = "http://noaca5.org/">http://noaca5.org/</a>. <br> <br> <progress style="width: 100%; text-align:center" id = myProgress color="#8ccc62" max="50000" value="5000" aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" tabindex="-1"></progress>
+                                    We currently have collected <strong><span id="countervalue"></span></strong> form submissions out of our goal of 50,000. Please spread the word! <br><br>
+                        </span>
+
+                    </div>
+
+                    <script>
+                                        
+                        fetch("/counter").then(response => response.json()).then(value => {
+                            document.getElementById("countervalue").innerHTML = value;
+                            document.getElementById("myProgress").value = value;
+    
+                        });
+                        
+                    </script>
+
 
                     <input type="hidden" name="district" value="" />
                     <input type="hidden" name="inframe" value="N" />
@@ -136,12 +181,12 @@
                     <div class="wrap-input2 validate-input" data-validate="Message is required">
                         <!--<p>Message *</p>-->
 
-                        <textarea class="input2" name="jv_text" rows="5" required>
-                        
-Honorable Assembly Member,&#13;&#10;     I am writing to urge you to vote NO on ACA-5 at the coming Appropriations Committee hearings.&#13;&#10;     Our online petition has collected more than 30k signatures in a very short time (https://www.change.org/p/california-state-assembly-members-vote-no-to-aca-5), and this shows voters do not want to revive the affirmative acts in any form. &#13;&#10;     Please protect our golden state by voting NO on ACA-5. Our community is counting on you to protect our rights and future!
-                    Sincerely,</textarea>
-                        <span class="focus-input2" data-placeholder="MESSAGE"></span>
+                        <textarea class="input2" name="jv_text" rows="6" required> 
 
+I urge you to vote NO on ACA-5.  The State of California should not play favorites with its residents based on race, sex, color, ethnicity or national origin.  It’s wrong - and our community is counting on you to protect our rights and future.
+                        </textarea>
+                        <span class="focus-input2" data-placeholder="MESSAGE"></span>
+                        
                     </div>
 
                     <!--<div class="btn-block">
@@ -156,33 +201,39 @@ Honorable Assembly Member,&#13;&#10;     I am writing to urge you to vote NO on 
                             </button>
                         </div>
                     </div>
+                    <span><br><br></span>
+                    <img src = "images/cjr_no_aca5.jpg" style="width:100%;height:auto;"  class="center">
                 </form>
             </div>
         </div>
     </div>
 
+    </div>
 
 
 
-    <!--===============================================================================================-->
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/bootstrap/js/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="js/main.js"></script>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
-        gtag('config', 'UA-23581568-13');
-    </script>
+
+        <!--===============================================================================================-->
+        <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/bootstrap/js/popper.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="vendor/select2/select2.min.js"></script>
+        <!--===============================================================================================-->
+        <script src="js/main.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'UA-23581568-13');
+        </script>
 
 </body>
 
